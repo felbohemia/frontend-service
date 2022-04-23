@@ -1,0 +1,37 @@
+function ShowPage(a,myform,mycontents,myloading){
+
+var mydomain = 'http://' + window.location.host + '/';
+var myreq;
+var PageContent;
+var myroutine = new AJAXroutine();
+if(mycontents){
+	if(document.getElementById(mycontents))
+		PageContent = mycontents;
+			else
+		PageContent = "Page_Content";
+}
+else
+PageContent = "Page_Content";
+
+if(myform)
+ myreq = myroutine.GetFormValues(myform,PageContent);
+else
+ myreq = myroutine.GetFormValues("Page_Form",PageContent);
+
+if(a == null)
+return;
+if(a==0){
+myroutine.showContentsEx(PageContent, "test", myreq, mydomain + "signup.php",myloading);
+return;
+}
+
+myroutine.showContentsEx(PageContent, "test", myreq, mydomain + a,myloading);
+//document.location="#form_top";
+return;
+}
+
+<a href="#" onclick="ShowPage('ecampus/applications/index.php',null,'none');return false;" class="moretag" title="read more">HERE</a>
+
+
+
+<a href="#" title="Click here to apply" faculties="<span title='Click here to collapse' style='cursor: hand' onclick='this.parentNode.parentNode.childNodes(1).innerHTML=&quot;&quot;'>[-]</span>Colapse<ul>Applies to include:</ul>" onmouseover="this.parentNode.childNodes(1).innerHTML=this.getAttribute('faculties')" onclick="javascript:ShowPage('ecampus/applications/login.php?studytype=FULL-TIME&amp;applicationname=2021/2022 POST UTME SCREENING APPLICATION FOR ADMISSION&amp;applicationsession=2021/2022');return false"><b>FULL-TIME</b></a>
